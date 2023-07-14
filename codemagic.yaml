@@ -4,7 +4,7 @@ workflows:
     environment:
       flutter: 3.10.5
       android_signing:
-        - keystore_reference
+        - mykey
     scripts:
       - name: Set up local.properties
         script: | 
