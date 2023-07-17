@@ -1,7 +1,7 @@
 workflows:
   build_ios:
     name: Build iOS
-    instance_type: mac_pro
+    instance_type: mac_mini_m1
     environment:
       flutter: 3.10.5
       xcode: latest
