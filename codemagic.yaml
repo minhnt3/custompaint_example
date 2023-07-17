@@ -17,13 +17,16 @@ workflows:
     scripts:
       - name: Get Flutter packages
         script: | 
-          flutter packages pub get
+          flutter pub get
       - name: pwd
         script: |
           pwd
       - name: ls
         script: |
           ls
+      - name: flutter doctor
+        script: |
+          flutter doctor -v
       - name: Install pods
         script: |
           cd ios && pod install
