@@ -8,9 +8,9 @@ workflows:
       cocoapods: default
       ios_signing:
         provisioning_profiles:
-          - swifter-profile
+          - myprodis
         certificates:
-          - ios-distribution
+          - mycert
       vars:
         XCODE_WORKSPACE: "Runner.xcworkspace" # <-- Put the name of your workspace here.
         XCODE_SCHEME: "Runner" # <-- Put the name of your scheme here.
