@@ -8,19 +8,13 @@ workflows:
       cocoapods: default
       ios_signing:
         provisioning_profiles:
-          - myprodis
+          - myprodis # Replace with your provisioning profile name
         certificates:
-          - mycert
+          - mycert # Replace with your certificate name
     scripts:
       - name: Get Flutter packages
         script: | 
           flutter pub get
-      - name: pwd
-        script: |
-          pwd
-      - name: ls
-        script: |
-          ls
       - name: flutter doctor
         script: |
           flutter doctor -v
@@ -30,7 +24,7 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles
-      - name: Build .ipa
+      - name: Build .ipa # Replace with your cmd to build .ipa
         script: |
           flutter build ipa --export-options-plist=ios/exportOptions.plist
     artifacts:
@@ -39,7 +33,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - ntminhdn@gmail.com
+          - ntminhdn@gmail.com # Replace with your email
         notify:
           success: true
           failure: true
@@ -49,7 +43,7 @@ workflows:
     environment:
       flutter: 3.10.5
       android_signing:
-        - mykey
+        - mykey # Replace with your keystore name
     scripts:
       - name: Set up local.properties
         script: | 
@@ -57,7 +51,7 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-      - name: Build AAB with Flutter
+      - name: Build AAB with Flutter # Replace with your cmd to build .aab
         script: | 
           flutter build appbundle --release
     artifacts:
@@ -65,7 +59,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - ntminhdn@gmail.com
+          - ntminhdn@gmail.com # Replace with your email
         notify:
           success: true
           failure: true
