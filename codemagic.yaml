@@ -1,66 +1,28 @@
 workflows:
   build_ios:
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'master'
+          include: true
+          source: true 
     name: Build iOS
-    instance_type: mac_mini_m1
-    environment:
-      flutter: 3.10.5
-      xcode: latest
-      cocoapods: default
-      ios_signing:
-        provisioning_profiles:
-          - myprodis # Replace with your provisioning profile name
-        certificates:
-          - mycert # Replace with your certificate name
     scripts:
-      - name: Get Flutter packages
+      - name: Print
         script: | 
-          flutter pub get
-      - name: flutter doctor
-        script: |
-          flutter doctor -v
-      - name: Install pods
-        script: |
-          cd ios && pod install
-      - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles
-      - name: Build .ipa # Replace with your cmd to build .ipa
-        script: |
-          flutter build ipa --export-options-plist=ios/exportOptions.plist
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      email:
-        recipients:
-          - ntminhdn@gmail.com # Replace with your email
-        notify:
-          success: true
-          failure: true
+          echo "Hello, world!"
   
   build_android:
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'master'
+          include: true
+          source: false 
     name: Build Android
-    environment:
-      flutter: 3.10.5
-      android_signing:
-        - mykey # Replace with your keystore name
     scripts:
-      - name: Set up local.properties
+      - name: Print
         script: | 
-          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Get Flutter packages
-        script: | 
-          flutter packages pub get
-      - name: Build AAB with Flutter # Replace with your cmd to build .aab
-        script: | 
-          flutter build appbundle --release
-    artifacts:
-      - android/app/build/outputs/**/*.aab
-    publishing:
-      email:
-        recipients:
-          - ntminhdn@gmail.com # Replace with your email
-        notify:
-          success: true
-          failure: true
-          
+          echo "Hello, world!"
