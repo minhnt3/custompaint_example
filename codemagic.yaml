@@ -4,7 +4,7 @@ workflows:
       events:
         - pull_request
       branch_patterns:
-        - pattern: 'master'
+        - pattern: 'build/stg/*'
           include: true
           source: true 
     name: Build iOS
@@ -18,7 +18,7 @@ workflows:
       events:
         - pull_request
       branch_patterns:
-        - pattern: 'master'
+        - pattern: 'build/stg/*'
           include: true
           source: false 
     name: Build Android
